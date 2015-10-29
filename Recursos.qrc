@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/Imagenes">
+        <file>Resources/botonAyuda.jpg</file>
+        <file>Resources/botonProcesarImagen.jpg</file>
+        <file>Resources/botonSalir.jpg</file>
+        <file>Resources/botonSeleccionar.jpg</file>
+        <file>Resources/botonVolver.jpg</file>
+        <file>Resources/fondoAyuda.jpg</file>
+        <file>Resources/fondoGeneral.jpg</file>
+        <file>Resources/fondoGreyScalePixel.jpg</file>
+    </qresource>
+</RCC>
