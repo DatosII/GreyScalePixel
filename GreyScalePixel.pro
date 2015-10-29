@@ -22,13 +22,14 @@ SOURCES += main.cpp\
     Logic/procesarimagen.cpp
 
 HEADERS  += Facade/facade.h \
-    Logic/Constants.h \
     GUI/imagenseleccionada.h \
     GUI/principalmenu.h \
     GUI/uploadimage.h \
     GUI/ventanaayuda.h \
     GUI/resultadofinal.h \
-    Logic/procesarimagen.h
+    Logic/procesarimagen.h \
+    GUI/constantsGUI.h \
+    Logic/constantsLogic.h
 
 FORMS    +=
 

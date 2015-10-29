@@ -2,11 +2,13 @@
 #define PROCESARIMAGEN_H
 
 #include <opencv2/opencv.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
-#include "Constants.h"
-#include <QDebug>
-
+#include "Logic/constantsLogic.h"
+/**
+ * @files procesarimagen.h
+ * @brief The procesarImagen class, Clase para convertir la imagen a la forma deseada
+ * @author Jairo Daniel Ortega Calderon
+ * @date October 10, 2015 *
+ */
 class procesarImagen{
 private:
     int r;

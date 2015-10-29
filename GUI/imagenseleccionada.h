@@ -8,13 +8,16 @@
 #include <QIcon>
 #include <QPainter>
 #include <opencv2/opencv.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
 #include "GUI/resultadofinal.h"
-#include "Logic/Constants.h"
+#include "GUI/constantsGUI.h"
 #include "Facade/facade.h"
 
-
+/**
+ * @file imagenseleccionada.h
+ * @brief The imagenSeleccionada class, Muestra la imagen seleccionada y se la pasa al facade
+ * @author Jairo Daniel Ortega Calderon
+ * @date October 10, 2015
+ */
 class imagenSeleccionada : public QMainWindow{
     Q_OBJECT
 private:
@@ -24,7 +27,7 @@ private:
     Facade* pFacade;
     void convertirMatrix(cv::Mat matrixImage);
 public:
-    imagenSeleccionada(QWidget *parent = 0);
+    imagenSeleccionada(QWidget *parent = CONSTANSGUI::CERO);
 public slots:
     void crearVentanaEleccion(cv::Mat matrixImage);
     void procesar();

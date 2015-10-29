@@ -2,16 +2,17 @@
 #define UPLOADIMAGE_H
 
 #include <opencv2/opencv.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/highgui/highgui.hpp>
 #include <QString>
 #include <QFileDialog>
+class PrincipalMenu;
 
-class uploadImage
-{
+/**
+ * @brief The uploadImage class, Clase para cargar la imagen del directorio
+ */
+class uploadImage{
 public:
     uploadImage();
-    cv::Mat seleccionarImagen();
+    cv::Mat seleccionarImagen(PrincipalMenu *pMenu);
 };
 
 #endif // UPLOADIMAGE_H
