@@ -1,4 +1,4 @@
-#include "uploadimage.h"
+#include "GUI/uploadimage.h"
 
 uploadImage::uploadImage(){
 }

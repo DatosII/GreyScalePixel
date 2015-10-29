@@ -13,20 +13,22 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        principalmenu.cpp \
-    uploadimage.cpp \
-    imagenseleccionada.cpp \
-    procesarimagen.cpp \
-    ventanaayuda.cpp \
-    facade.cpp
+    Facade/facade.cpp \
+    GUI/imagenseleccionada.cpp \
+    GUI/principalmenu.cpp \
+    GUI/uploadimage.cpp \
+    GUI/ventanaayuda.cpp \
+    GUI/resultadofinal.cpp \
+    Logic/procesarimagen.cpp
 
-HEADERS  += principalmenu.h \
-    uploadimage.h \
-    imagenseleccionada.h \
-    procesarimagen.h \
-    ventanaayuda.h \
-    Constants.h \
-    facade.h
+HEADERS  += Facade/facade.h \
+    Logic/Constants.h \
+    GUI/imagenseleccionada.h \
+    GUI/principalmenu.h \
+    GUI/uploadimage.h \
+    GUI/ventanaayuda.h \
+    GUI/resultadofinal.h \
+    Logic/procesarimagen.h
 
 FORMS    +=
 

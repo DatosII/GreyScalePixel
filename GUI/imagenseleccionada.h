@@ -10,8 +10,9 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include "procesarimagen.h"
-#include "Constants.h"
+#include "GUI/resultadofinal.h"
+#include "Logic/Constants.h"
+#include "Facade/facade.h"
 
 
 class imagenSeleccionada : public QMainWindow{
@@ -20,11 +21,12 @@ private:
     QLabel* fondo;
     QImage image;
     cv::Mat _matrix;
-    void convertMatrix(cv::Mat matrixImage);
+    Facade* pFacade;
+    void convertirMatrix(cv::Mat matrixImage);
 public:
     imagenSeleccionada(QWidget *parent = 0);
 public slots:
-    void newWindow(cv::Mat matrixImage);
+    void crearVentanaEleccion(cv::Mat matrixImage);
     void procesar();
 
 };

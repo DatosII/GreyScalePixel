@@ -6,7 +6,7 @@
 #include <QPixmap>
 #include <QPushButton>
 #include <QIcon>
-#include "principalmenu.h"
+#include "GUI/principalmenu.h"
 
 class ventanaAyuda : public QMainWindow{
     Q_OBJECT

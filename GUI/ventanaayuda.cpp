@@ -1,4 +1,4 @@
-#include "ventanaayuda.h"
+#include "GUI/ventanaayuda.h"
 
 ventanaAyuda::ventanaAyuda(QWidget *parent){
     QLabel* fondo = new QLabel(this);

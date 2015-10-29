@@ -1,7 +1,6 @@
-#include "principalmenu.h"
+#include "GUI/principalmenu.h"
 
 PrincipalMenu::PrincipalMenu(QWidget *parent){
-
     QLabel* fondo = new QLabel(this);
 
     QPixmap imagenFondo(":/Imagenes/Resources/fondoGreyScalePixel.jpg");
@@ -27,8 +26,8 @@ PrincipalMenu::PrincipalMenu(QWidget *parent){
     botonSalir->setIcon(iconoSalir);
     botonSalir->setIconSize(imagenSalir.rect().size());
 
-    QObject::connect(botonAyuda, SIGNAL(clicked()), this, SLOT(newWindow2()));
-    QObject::connect(botonSeleccion, SIGNAL(clicked()), this, SLOT(newWindow()));
+    QObject::connect(botonAyuda, SIGNAL(clicked()), this, SLOT(crearVentanaAyuda()));
+    QObject::connect(botonSeleccion, SIGNAL(clicked()), this, SLOT(crearVentanaDirectorio()));
     QObject::connect(botonSalir, SIGNAL(clicked()), this, SLOT(close()));
 
     fondo->setPixmap(imagenFondo);
@@ -36,18 +35,18 @@ PrincipalMenu::PrincipalMenu(QWidget *parent){
     this->showMaximized();
 }
 
-void PrincipalMenu::newWindow(){
+void PrincipalMenu::crearVentanaDirectorio(){
     uploadImage* upload = new uploadImage();
     cv::Mat matrixImage = upload->seleccionarImagen();
     if(matrixImage.data){
         imagenSeleccionada *imagen = new imagenSeleccionada();
-        imagen->newWindow(matrixImage);
+        imagen->crearVentanaEleccion(matrixImage);
         this->close();
         this->deleteLater();
     }
 }
 
-void PrincipalMenu::newWindow2(){
+void PrincipalMenu::crearVentanaAyuda(){
     ventanaAyuda* ayuda = new ventanaAyuda();
     this->close();
     this->deleteLater();

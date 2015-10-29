@@ -1,10 +1,11 @@
-#include "imagenseleccionada.h"
+#include "GUI/imagenseleccionada.h"
 
 imagenSeleccionada::imagenSeleccionada(QWidget *parent){
+    this->pFacade = new Facade();
     this->fondo = new QLabel(this);
 }
 
-void imagenSeleccionada::newWindow(cv::Mat matrixImage){
+void imagenSeleccionada::crearVentanaEleccion(cv::Mat matrixImage){
     this->_matrix=matrixImage(cv::Rect(0, 0, (matrixImage.cols-(matrixImage.cols%CONSTANS::TAMANO)), (matrixImage.rows-(matrixImage.rows%CONSTANS::TAMANO))));
     QPixmap imagenFondo(":/Imagenes/Resources/fondoGeneral.jpg");
     QPixmap imagenProcesar(":/Imagenes/Resources/botonProcesarImagen.jpg");
@@ -15,7 +16,7 @@ void imagenSeleccionada::newWindow(cv::Mat matrixImage){
     botonProcesar->setIconSize(imagenProcesar.rect().size());
 
     QObject::connect(botonProcesar, SIGNAL(clicked()), this, SLOT(procesar()));
-    convertMatrix(matrixImage);
+    convertirMatrix(matrixImage);
 
     QPixmap *pixmap=new QPixmap(imagenFondo.width(), imagenFondo.height());
     QPainter *painter=new QPainter(pixmap);
@@ -23,13 +24,12 @@ void imagenSeleccionada::newWindow(cv::Mat matrixImage){
     painter->drawPixmap(122, 134, this->image.width(), this->image.height(), QPixmap::fromImage(this->image));
     painter->end();
 
-
     this->fondo->setPixmap(*pixmap);
     this->fondo->resize(QSize(imagenFondo.width(),imagenFondo.height()));
     this->showMaximized();
 }
 
-void imagenSeleccionada::convertMatrix(cv::Mat matrixImage){
+void imagenSeleccionada::convertirMatrix(cv::Mat matrixImage){
     if(matrixImage.type()==CV_8UC1){
         QVector<QRgb> colorTable;
         for (int i=0; i<256; i++)
@@ -47,8 +47,9 @@ void imagenSeleccionada::convertMatrix(cv::Mat matrixImage){
 }
 
 void imagenSeleccionada::procesar(){
-    procesarImagen* imagen = new procesarImagen();
-    imagen->newWIndow(this->_matrix);
+    cv::Mat* resultado = this->pFacade->enviar(this->_matrix);
+    resultadoFinal* imagen = new resultadoFinal();
+    imagen->ventanaFinal(resultado[0], resultado[1]);
     this->close();
     this->deleteLater();
 }
