@@ -10,7 +10,7 @@ ventanaAyuda::ventanaAyuda(QWidget *parent){
     QPixmap imagenVolver(":/Imagenes/Resources/botonVolver.jpg");
     QIcon iconoVolver(imagenVolver);
     QPushButton* botonVolver = new QPushButton(this);
-    botonVolver->setGeometry(1169, CONSTANSGUI::CERO,imagenVolver.width(), imagenVolver.height());
+    botonVolver->setGeometry(CONSTANSGUI::POSXVOLVER, CONSTANSGUI::CERO,imagenVolver.width(), imagenVolver.height());
     botonVolver->setIcon(iconoVolver);
     botonVolver->setIconSize(imagenVolver.rect().size());
     QObject::connect(botonVolver, SIGNAL(clicked()), this, SLOT(volver()));

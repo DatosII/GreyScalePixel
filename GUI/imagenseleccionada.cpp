@@ -18,7 +18,7 @@ void imagenSeleccionada::crearVentanaEleccion(cv::Mat matrixImage){
     QPixmap imagenProcesar(":/Imagenes/Resources/botonProcesarImagen.jpg");
     QIcon iconoProcesar(imagenProcesar);
     QPushButton* botonProcesar = new QPushButton(this);
-    botonProcesar->setGeometry(860,280,imagenProcesar.width(), imagenProcesar.height());
+    botonProcesar->setGeometry(CONSTANSGUI::POSXBOTONPROC,CONSTANSGUI::POSYBOTONPROC,imagenProcesar.width(), imagenProcesar.height());
     botonProcesar->setIcon(iconoProcesar);
     botonProcesar->setIconSize(imagenProcesar.rect().size());
     QObject::connect(botonProcesar, SIGNAL(clicked()), this, SLOT(procesar()));
@@ -26,7 +26,7 @@ void imagenSeleccionada::crearVentanaEleccion(cv::Mat matrixImage){
     QPixmap *pixmap=new QPixmap(imagenFondo.width(), imagenFondo.height());
     QPainter *painter=new QPainter(pixmap);
     painter->drawPixmap(CONSTANSGUI::CERO, CONSTANSGUI::CERO, imagenFondo.width(), imagenFondo.height(), imagenFondo);
-    painter->drawPixmap(122, 134, this->image.width(), this->image.height(), QPixmap::fromImage(this->image));
+    painter->drawPixmap(CONSTANSGUI::POSXIMAGEN1, CONSTANSGUI::POSYIMAGEN, this->image.width(), this->image.height(), QPixmap::fromImage(this->image));
     painter->end();
     this->fondo->setPixmap(*pixmap);
     this->fondo->resize(QSize(imagenFondo.width(),imagenFondo.height()));
@@ -39,7 +39,7 @@ void imagenSeleccionada::crearVentanaEleccion(cv::Mat matrixImage){
 void imagenSeleccionada::convertirMatrix(cv::Mat matrixImage){
     if(matrixImage.type()==CV_8UC1){
         QVector<QRgb> colorTable;
-        for (int i=CONSTANSGUI::CERO; i<256; i++)
+        for (int i=CONSTANSGUI::CERO; i<CONSTANSGUI::LIMPIXEL; i++)
             colorTable.push_back(qRgb(i,i,i));
         const uchar *qImageBuffer = (const uchar*)matrixImage.data;
         QImage newImage(qImageBuffer, matrixImage.cols, matrixImage.rows, matrixImage.step, QImage::Format_Indexed8);

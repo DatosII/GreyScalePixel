@@ -18,7 +18,7 @@ void resultadoFinal::ventanaFinal(cv::Mat pMatrixColor, cv::Mat pMatrixGris){
     QPixmap imagenVolver(":/Imagenes/Resources/botonVolver.jpg");
     QIcon iconoVolver(imagenVolver);
     QPushButton* botonVolver = new QPushButton(this);
-    botonVolver->setGeometry(1169, CONSTANSGUI::CERO,imagenVolver.width(), imagenVolver.height());
+    botonVolver->setGeometry(CONSTANSGUI::POSXVOLVER, CONSTANSGUI::CERO,imagenVolver.width(), imagenVolver.height());
     botonVolver->setIcon(iconoVolver);
     botonVolver->setIconSize(imagenVolver.rect().size());
     QObject::connect(botonVolver, SIGNAL(clicked()), this, SLOT(volver()));
@@ -27,8 +27,8 @@ void resultadoFinal::ventanaFinal(cv::Mat pMatrixColor, cv::Mat pMatrixGris){
     QPixmap *pixmap=new QPixmap(imagenFondo.width(), imagenFondo.height());
     QPainter *painter=new QPainter(pixmap);
     painter->drawPixmap(CONSTANSGUI::CERO, CONSTANSGUI::CERO, imagenFondo.width(), imagenFondo.height(), imagenFondo);
-    painter->drawPixmap(122, 134, this->_imagenColor.width(), this->_imagenColor.height(), QPixmap::fromImage(this->_imagenColor));
-    painter->drawPixmap(744, 134, this->_imagenGris.width(), this->_imagenGris.height(), QPixmap::fromImage(this->_imagenGris));
+    painter->drawPixmap(CONSTANSGUI::POSXIMAGEN1, CONSTANSGUI::POSYIMAGEN, this->_imagenColor.width(), this->_imagenColor.height(), QPixmap::fromImage(this->_imagenColor));
+    painter->drawPixmap(CONSTANSGUI::POSXIMAGEN2, CONSTANSGUI::POSYIMAGEN, this->_imagenGris.width(), this->_imagenGris.height(), QPixmap::fromImage(this->_imagenGris));
     painter->end();
     this->fondo->setPixmap(*pixmap);
     this->fondo->resize(QSize(imagenFondo.width(),imagenFondo.height()));
@@ -42,7 +42,7 @@ void resultadoFinal::ventanaFinal(cv::Mat pMatrixColor, cv::Mat pMatrixGris){
 void resultadoFinal::convertirMatrix(cv::Mat pMatrixImage, std::string pType){
     if(pMatrixImage.type()==CV_8UC1){
         QVector<QRgb> colorTable;
-        for (int i=CONSTANSGUI::CERO; i<256; i++)
+        for (int i=CONSTANSGUI::CERO; i<CONSTANSGUI::LIMPIXEL; i++)
             colorTable.push_back(qRgb(i,i,i));
         const uchar *qImageBuffer = (const uchar*)pMatrixImage.data;
         QImage newImage(qImageBuffer, pMatrixImage.cols, pMatrixImage.rows, pMatrixImage.step, QImage::Format_Indexed8);
